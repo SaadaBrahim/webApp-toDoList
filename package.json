@@ -1,0 +1,26 @@
+{
+  "name": "webapp-todolist",
+  "version": "1.0.0",
+  "description": "web application che con la quale posso creare e modificare toDo list.",
+  "main": "index.js",
+  "scripts": {
+    "test": "node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SaadaBrahim/webApp-toDoList.git"
+  },
+  "keywords": [],
+  "author": "Saada Brahim Bryan",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/SaadaBrahim/webApp-toDoList/issues"
+  },
+  "homepage": "https://github.com/SaadaBrahim/webApp-toDoList#readme",
+  "dependencies": {
+    "body-parser": "^2.2.2",
+    "ejs": "^5.0.2",
+    "express": "^5.2.1"
+  }
+}
