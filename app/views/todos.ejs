@@ -3,7 +3,6 @@
 <head><title>Todo</title></head>
 <body>
   <h1>Lista todo</h1>
-  <!-- 🟢 CREA TODO -->
 <form id="todoForm">
   <input name="title" placeholder="Titolo" required>
   <input name="description" placeholder="Descrizione" required>
@@ -18,17 +17,14 @@
     <li>
       <%= todo.title %> - <%= todo.description %>
 
-      <!-- 🔴 DELETE -->
       <button onclick="deleteTodo(<%= todo.id %>)">Elimina</button>
 
-      <!-- 🟡 UPDATE -->
       <button onclick="updateTodo(<%= todo.id %>)">Modifica</button>
     </li>
   <% }) %>
 </ul>
 
 <script>
-// 🔴 DELETE
 function deleteTodo(id) {
   fetch('/todos/' + id, {
     method: 'DELETE'
@@ -38,7 +34,6 @@ function deleteTodo(id) {
 }
 
 
-// 🟢 CREATE
 document.getElementById('todoForm').addEventListener('submit', async (e) => {
   e.preventDefault();
 
@@ -57,7 +52,6 @@ document.getElementById('todoForm').addEventListener('submit', async (e) => {
 });
 
 
-// 🟡 UPDATE
 function updateTodo(id) {
   const title = prompt("Nuovo titolo:");
   const description = prompt("Nuova descrizione:");
