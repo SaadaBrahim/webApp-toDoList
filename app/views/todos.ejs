@@ -29,8 +29,12 @@ function deleteTodo(id) {
   fetch('/todos/' + id, {
     method: 'DELETE'
   })
-  .then(res => res.json())
-  .then(() => location.reload());
+  .then(res => {
+    if (!res.ok) throw new Error('Errore eliminazione todo');
+    return res.json();
+  })
+  .then(() => location.reload())
+  .catch(err => console.error(err));
 }
 
 
@@ -56,13 +60,21 @@ function updateTodo(id) {
   const title = prompt("Nuovo titolo:");
   const description = prompt("Nuova descrizione:");
 
+  if (title === null || description === null) {
+    return;
+  }
+
   fetch('/todos/' + id, {
     method: 'PUT',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ title, description })
   })
-  .then(res => res.json())
-  .then(() => location.reload());
+  .then(res => {
+    if (!res.ok) throw new Error('Errore aggiornamento todo');
+    return res.json();
+  })
+  .then(() => location.reload())
+  .catch(err => console.error(err));
 }
 </script>
 </body>

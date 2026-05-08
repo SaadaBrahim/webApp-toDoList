@@ -18,14 +18,17 @@ exports.createTodo = (req, res) => {
 exports.deleteTodo = (req, res) => {
   Todo.delete(req.params.id);
 
-  res.redirect('/todos');
+  res.json({ message: 'Todo deleted' });
 };
 
 exports.updateTodo = (req, res) => {
   const { id } = req.params;
   const { title, description } = req.body;
 
-  Todo.update(id, title, description);
+  const updatedTodo = Todo.update(id, title, description);
+  if (!updatedTodo) {
+    return res.status(404).json({ error: 'Todo not found' });
+  }
 
-  res.redirect('/todos');
+  res.json({ message: 'Todo updated', todo: updatedTodo });
 };
